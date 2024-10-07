@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Monitoramento ESP32-MQTT-Proximity-Encoder</string>
+    <string name="string_url">Endereço Servidor:</string>
+    <string name="string_porta">Porta:</string>
+</resources>
