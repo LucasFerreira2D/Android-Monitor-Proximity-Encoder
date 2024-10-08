@@ -13,6 +13,7 @@ Este aplicativo Android foi desenvolvido para monitorar e exibir dados de proxim
 * Interface amigável com diálogos de configuração.
 
 ![image](https://github.com/user-attachments/assets/22ce11f5-0acb-4539-8cc6-8ace24a1b262)
+
 ![image](https://github.com/user-attachments/assets/a49a5f6e-a60e-4876-97e3-ad91f258be9d)
 
 ## 2. Requisitos
