@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -172,14 +173,22 @@ public class MainActivity extends AppCompatActivity {
             try {
                 Long port = Long.valueOf(portStr);
 
-                Servidor servidorSalvar = new Servidor();
-                servidorSalvar.setUrl(url);
-                servidorSalvar.setPorta(port);
+                Servidor servidorBanco = DataBase.getInstance(MainActivity.this).servidorDao().buscar().get();
 
-                // Salva o servidor no banco de dados
-                DataBase.getInstance(MainActivity.this).servidorDao().inserir(servidorSalvar).get();
+                if(servidorBanco == null){
+                    Servidor servidorSalvar = new Servidor();
+                    servidorSalvar.setUrl(url);
+                    servidorSalvar.setPorta(port);
+                    DataBase.getInstance(MainActivity.this).servidorDao().inserir(servidorSalvar).get();
+                    servidor = servidorSalvar;
+                }else{
+                    servidorBanco.setUrl(url);
+                    servidorBanco.setPorta(port);
+                    servidor = servidorBanco;
+                    DataBase.getInstance(MainActivity.this).servidorDao().inserir(servidorBanco).get();
+                    servidor = servidorBanco;
+                }
 
-                servidor = servidorSalvar;
                 fetchProximityData();
                 fetchGyroData();
 
